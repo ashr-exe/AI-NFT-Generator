@@ -78,15 +78,15 @@ function App() {
       data: JSON.stringify({
         inputs: description, options: { wait_for_model: true },
       }),
-      responseType: 'arraybuffer',
-    })
+      responseType: 'blob',
+    });
 
-    const type = response.headers['content-type']
-    const data = response.data
+    const type = response.headers['content-type'];
+    const data = response.data;
 
-    const base64data = Buffer.from(data).toString('base64')
-    const img = `data:${type};base64,` + base64data // <-- This is so we can render it on the page
-    setImage(img)
+    const base64data = Buffer.from(data).toString('base64');
+    const img = `data:${type};base64,` + base64data; // <-- This is so we can render it on the page
+    setImage(img);
 
     return data
   }
